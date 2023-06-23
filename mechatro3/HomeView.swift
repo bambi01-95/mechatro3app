@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Network
 
 // MARK: HOME PAGE
 struct HomeView: View{
@@ -14,22 +15,24 @@ struct HomeView: View{
     
     @State var StickON: Bool = true
     @State var monitorOn:Bool = true
+    @ObservedObject var Contoroller: sendMessage
     
-    @State var curentIP:String = "123.12.34.56"
     @State var settingIP:String = ""
-    @State var curentPort:String = "8080"
     @State var settingPort:String = ""
-    @State var myIP:String = "123.12.34.56"
-    @State var myPORT:String = "8080"
+    
+    var myIP:String = "Check it from Settings → Wi-Fi → Details."
+    var myPORT:String = "8080"
     
     @State var selectedNS: String = "Special"
     @State var selectedSG: String = "Stick"
     
+    @FocusState  var isInputActive:Bool
     var buttonHeight: CGFloat = 50
     var body: some View{
         let bounds = UIScreen.main.bounds
         let Swidth  = bounds.width
         let Sheight = bounds.height
+        
         ZStack{
             VStack{
                 // background
@@ -43,16 +46,18 @@ struct HomeView: View{
                 // MARK: left
                 
                 VStack{
-                    TextField("   IP: \(curentIP)",text:$settingIP)
+                    TextField("   IP: \(Contoroller.hoststr)",text:$settingIP)
                         .frame(width: 400)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
                         .padding(.all,5)
-                    TextField("Port: \(curentPort)",text:$settingPort)
+        
+                    TextField("Port: \(Contoroller.portstr)",text:$settingPort)
                         .frame(width: 400)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
+                        .keyboardType(.numbersAndPunctuation)
                         .padding(.all,5)
+
                     
                     Text("     IP: \(myIP)")
                         .frame(width: 400,height: 35,alignment: .leading)
@@ -68,11 +73,13 @@ struct HomeView: View{
                     
                     Button {
                         if settingIP != ""{
-                            curentIP = settingIP
+                            Contoroller.host = NWEndpoint.Host(settingIP)
+                            Contoroller.hoststr = settingIP
                             settingIP = ""
                         }
                         if settingPort != ""{
-                            curentPort = settingPort
+                            Contoroller.port = NWEndpoint.Port(settingPort) ?? 8080
+                            Contoroller.portstr = settingPort
                             settingPort = ""
                         }
                         
@@ -183,6 +190,8 @@ struct HomeView: View{
                                 page = .NormalGyro
                             }
                         }
+                        home = false
+                    
                     } label: {
                         Text("Start")
                             .bold()
@@ -203,7 +212,7 @@ struct HomeView: View{
             .onAppear{print("s-home")}
             .onDisappear{
                 print("e-home")
-                home = false
+//                home = false
             }
         }
     }

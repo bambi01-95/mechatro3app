@@ -13,7 +13,7 @@ struct SpecialStickView: View {
     
     // MARK: for main
     @ObservedObject var Stream = streamFrames()
-    @ObservedObject var Contoroller = sendMessage()
+    @ObservedObject var Contoroller:sendMessage
     @State var timer :Timer?
     @State var count: Int = 0
 
@@ -100,13 +100,19 @@ struct SpecialStickView: View {
                         .frame(width: 600, height: 600)
                         .padding(.top,20)
                 }
-                Text("L\(Lvec) R:\(Rvec)")
+                
             }
+            VStack{
+                Text("L\(Lvec) R:\(Rvec)")
+                    .offset(y:-Sheight/2 + 30)
+            }
+
             
             // MARK: home button
             VStack{
                 Button {
                     page = .home
+                    home = true
                 } label: {
                     Image("home")
                         .resizable()
@@ -198,14 +204,15 @@ struct SpecialStickView: View {
 
         }
         .onAppear{
+            print("sss")
             Stream.self.startReceive(0)
             startSend()
         }
         .onDisappear{
+            print("ess")
             Stream.self.stopReceive(0)
             stopSend()
-            
-            home = true
+//            home = true
         }
     }
     
@@ -233,7 +240,7 @@ struct SpecialStickView: View {
         }
         else{
             Lvec = 0.0
-            Rvec = 1.0
+            Rvec = 0.0
         }
         let message:String = String(Int(Lvec)) + "," + String(Int(Rvec)) + "now"
         return message
@@ -241,7 +248,7 @@ struct SpecialStickView: View {
     func startSend(){
         Contoroller.self.connect()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            println()
+//            println()
             let message:String = ConvertMessage()
             Contoroller.self.send(message.data(using:.utf8)!)
         }

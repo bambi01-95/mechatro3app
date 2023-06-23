@@ -15,19 +15,27 @@ import Foundation // timer
 // MARK: SEND CLASS
 class sendMessage: ObservableObject{
     @Published var message = "0,0,0,0"
+    @Published var hoststr: String
+    @Published var portstr: String
     var connection: NWConnection? = nil
 // MARK: ポート番号　ここに書く
-    var host: NWEndpoint.Host = "192.168.0.31"
-    var port: NWEndpoint.Port = 8008
+    @Published var host: NWEndpoint.Host
+    @Published var port: NWEndpoint.Port
     
     var timer :Timer?
-    var count: Int = 0
+    var count: Int64 = 0
+    
+    init() {
+        self.hoststr = "192.168.0.31"
+        self.portstr = "8008"
+        self.host = "192.168.0.31"
+        self.port = 8008
+    }
 
     
     func startSend(){
         self.connect()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.println()
             self.send(self.message.data(using: .utf8)!)
         }
     }
@@ -47,12 +55,13 @@ class sendMessage: ObservableObject{
                 if let error = sendError {
                     NSLog("Unable to process and send the data: \(error)")
                 } else {
-                    NSLog("Data has been sent")
+                    // MARK: if it cannot send
+//                    NSLog("Data has been sent")
                     self.connection!.receiveMessage { (data, context, isComplete, error) in
                         guard let myData = data else { return }
                         NSLog("Received message: " + String(decoding: myData, as: UTF8.self))
                         print(type(of: data))
-                        
+
                     }
                 }
             }))

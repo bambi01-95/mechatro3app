@@ -12,7 +12,7 @@ struct NormalStickView: View {
     @Binding var home:Bool
     
     // MARK: for main
-    @ObservedObject var Contoroller = sendMessage()
+    @ObservedObject var Contoroller:sendMessage
     @State var timer :Timer?
     @State var count: Int = 0
 
@@ -88,12 +88,16 @@ struct NormalStickView: View {
         ZStack{
             // 背景（ストリーミング画像の挿入場所）
             // MARK: background
-            Text("L\(Lvec) R:\(Rvec)")
+            VStack{
+                Text("L\(Lvec) R:\(Rvec)")
+                    .offset(y:-Sheight/2 + 30)
+            }
             
             // MARK: home button
             VStack{
                 Button {
                     page = .home
+                    home = true
                 } label: {
                     Image("home")
                         .resizable()
@@ -188,11 +192,13 @@ struct NormalStickView: View {
         }
         .background(Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.2))
         .onAppear{
+            print("sns")
             startSend()
         }
         .onDisappear{
+            print("ens")
             stopSend()
-            home = true
+//            home = true
         }
     }
     
@@ -228,7 +234,7 @@ struct NormalStickView: View {
     func startSend(){
         Contoroller.self.connect()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            println()
+//            println()
             let message:String = ConvertMessage()
             Contoroller.self.send(message.data(using:.utf8)!)
         }

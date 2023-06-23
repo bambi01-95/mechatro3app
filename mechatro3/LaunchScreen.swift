@@ -31,8 +31,10 @@ struct LaunchScreen: View {
                     launch = false
                 }
             }
+            print("s-launch")
         }
         .onDisappear{
+            print("e-launch")
             page = .home
             home = true
         }

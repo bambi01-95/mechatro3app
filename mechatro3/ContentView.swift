@@ -21,26 +21,35 @@ struct ContentView: View {
     @State var page:Pagetype = .Launch
     @State var home: Bool = false
     @State var launch: Bool = true
+    @ObservedObject var Contoroller = sendMessage()
+
     
     var body: some View {
         ZStack{
-            if home == true{
-                if (page == .home){
-                    HomeView(page:$page,home:$home)
+            if launch == false{
+                Image("home_back")
+                .resizable()
+                .frame(width:300,height: 100)
+                    .mask(
+                        Text("TATA")
+                            .font(.system(size: 100, weight: .black)))
+            }
+            if (home == true){
+                if(page == .home){
+                    HomeView(page:$page,home:$home, Contoroller: Contoroller)
                 }
             }
             else{
                 if(page == .NormalStick){
-                    NormalStickView(page: $page, home: $home)
+                    NormalStickView(page: $page, home: $home,Contoroller: Contoroller)
                 }
-                if(page == .NormalGyro){
-                    NormalGyroView(page: $page, home: $home)
+                if(page == .NormalGyro){                    NormalGyroView(page: $page, home: $home,Contoroller: Contoroller)
                 }
                 if(page == .SpecialStick){
-                    SpecialStickView(page: $page, home: $home)
+                    SpecialStickView(page: $page, home: $home,Contoroller: Contoroller)
                 }
                 if(page == .SpecialGyro){
-                    SpecialGyroView(page: $page, home: $home)
+                    SpecialGyroView(page: $page, home: $home, Contoroller: Contoroller)
                 }
             }
             if launch == true {
@@ -59,3 +68,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

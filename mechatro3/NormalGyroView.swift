@@ -13,7 +13,7 @@ struct NormalGyroView: View {
     @Binding var home:Bool
     
     // for main
-    @ObservedObject var Contoroller = sendMessage()
+    @ObservedObject var Contoroller: sendMessage
     @State var timer :Timer?
     @State var count: Int = 0
     @State var Lvec = 0.0
@@ -34,28 +34,27 @@ struct NormalGyroView: View {
         let bounds = UIScreen.main.bounds
         let Sheight = bounds.height
         let Swidth = bounds.width
-        let d = -6 * Sheight / Double.pi
         
         ZStack{
 
 
             // 傾きの値を表示
             VStack{
-                Text("YPR")
-                Text("yaw:\(yaw)")
-                Text("pitch:\(pitch)")
-                Text("roll:\(roll)")
-                Text("velocity: \(velocity)")
-                    .padding(.top)
-                Text("Lvec:\(Lvec) Rvec:\(Rvec)")
-                Text("d: \(pitch * d)")
-            }
+//                Text("yaw:\(yaw)")
+//                Text("pitch:\(pitch)")
+//                Text("roll:\(roll)")
+                Text("Velocity: \(Int(velocity))")
+//                    .padding(.top)
+                Text("Lvec:\(Int(Lvec)) Rvec:\(Int(Rvec))")
+//                Text("d: \(pitch * d)")
+            }.offset(y:-Sheight/2 + 30)
             
             
             // MARK: home button
             VStack {
                 Button {
                     page = .home
+                    home = true
                 } label: {
                     Image("home")
                         .resizable()
@@ -160,20 +159,22 @@ struct NormalGyroView: View {
                     
                     
                 }
-                .padding(.trailing, 40)
+                .padding(.trailing, 70)
             }
             
         }
         .frame(width: Swidth,height: Sheight + 50)
         .background(Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.2))
         .onAppear{
+            print("sng")
             start()
             Contoroller.self.connect()
         }
         .onDisappear{
+            print("eng")
             stop()
             Contoroller.self.disconnect()
-            home = true
+//            home = true
         }
     }
     
