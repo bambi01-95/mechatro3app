@@ -11,6 +11,14 @@
 		1B4502302A3FDE580002F5D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45022F2A3FDE580002F5D9 /* ContentView.swift */; };
 		1B4502322A3FDE590002F5D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4502312A3FDE590002F5D9 /* Assets.xcassets */; };
 		1B4502362A3FDE590002F5D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4502352A3FDE590002F5D9 /* Preview Assets.xcassets */; };
+		1B45023D2A3FDED70002F5D9 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45023C2A3FDED70002F5D9 /* LaunchScreen.swift */; };
+		1B45023F2A3FE09A0002F5D9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45023E2A3FE09A0002F5D9 /* HomeView.swift */; };
+		1B4502412A3FE1750002F5D9 /* NormalStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502402A3FE1750002F5D9 /* NormalStickView.swift */; };
+		1B4502432A3FE2760002F5D9 /* NormalGyroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502422A3FE2760002F5D9 /* NormalGyroView.swift */; };
+		1B4502452A3FE2C00002F5D9 /* SpecialStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502442A3FE2C00002F5D9 /* SpecialStickView.swift */; };
+		1B4502472A3FE30B0002F5D9 /* SpecialGyroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */; };
+		1B4502492A3FEAA00002F5D9 /* SendClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502482A3FEAA00002F5D9 /* SendClass.swift */; };
+		1B45024B2A3FEAC60002F5D9 /* ReceiveClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +28,14 @@
 		1B4502312A3FDE590002F5D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B4502332A3FDE590002F5D9 /* mechatro3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mechatro3.entitlements; sourceTree = "<group>"; };
 		1B4502352A3FDE590002F5D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1B45023C2A3FDED70002F5D9 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		1B45023E2A3FE09A0002F5D9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1B4502402A3FE1750002F5D9 /* NormalStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalStickView.swift; sourceTree = "<group>"; };
+		1B4502422A3FE2760002F5D9 /* NormalGyroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalGyroView.swift; sourceTree = "<group>"; };
+		1B4502442A3FE2C00002F5D9 /* SpecialStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialStickView.swift; sourceTree = "<group>"; };
+		1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialGyroView.swift; sourceTree = "<group>"; };
+		1B4502482A3FEAA00002F5D9 /* SendClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendClass.swift; sourceTree = "<group>"; };
+		1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +69,18 @@
 			isa = PBXGroup;
 			children = (
 				1B45022D2A3FDE580002F5D9 /* mechatro3App.swift */,
+				1B45023C2A3FDED70002F5D9 /* LaunchScreen.swift */,
 				1B45022F2A3FDE580002F5D9 /* ContentView.swift */,
 				1B4502312A3FDE590002F5D9 /* Assets.xcassets */,
 				1B4502332A3FDE590002F5D9 /* mechatro3.entitlements */,
 				1B4502342A3FDE590002F5D9 /* Preview Content */,
+				1B45023E2A3FE09A0002F5D9 /* HomeView.swift */,
+				1B4502402A3FE1750002F5D9 /* NormalStickView.swift */,
+				1B4502422A3FE2760002F5D9 /* NormalGyroView.swift */,
+				1B4502442A3FE2C00002F5D9 /* SpecialStickView.swift */,
+				1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */,
+				1B4502482A3FEAA00002F5D9 /* SendClass.swift */,
+				1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */,
 			);
 			path = mechatro3;
 			sourceTree = "<group>";
@@ -140,7 +164,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4502302A3FDE580002F5D9 /* ContentView.swift in Sources */,
+				1B45023F2A3FE09A0002F5D9 /* HomeView.swift in Sources */,
+				1B4502432A3FE2760002F5D9 /* NormalGyroView.swift in Sources */,
+				1B4502412A3FE1750002F5D9 /* NormalStickView.swift in Sources */,
+				1B4502452A3FE2C00002F5D9 /* SpecialStickView.swift in Sources */,
+				1B4502472A3FE30B0002F5D9 /* SpecialGyroView.swift in Sources */,
+				1B45024B2A3FEAC60002F5D9 /* ReceiveClass.swift in Sources */,
 				1B45022E2A3FDE580002F5D9 /* mechatro3App.swift in Sources */,
+				1B45023D2A3FDED70002F5D9 /* LaunchScreen.swift in Sources */,
+				1B4502492A3FEAA00002F5D9 /* SendClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
