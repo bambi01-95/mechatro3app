@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SwiftUIView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WebView(loardUrl: URL(string: "https://ja.wikipedia.org/wiki/%E9%AD%9A%E9%A1%9E")!)
+        
     }
 }
 

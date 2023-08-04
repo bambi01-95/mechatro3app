@@ -105,7 +105,7 @@ class streamFrames : ObservableObject {
                 if let string = String(data: data, encoding: .ascii) {
                     if(string == "__end__"){//encode data comparing
 // MARK: 送信画像サイズを変えたら確認！
-                        if(self.count == 18){
+                        if(self.count == 16){
                             self.img_data = self.img_stock
                         }
                         self.img_stock = Data()

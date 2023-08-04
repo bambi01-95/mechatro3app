@@ -8,23 +8,38 @@
 import SwiftUI
 import Network
 
+enum ButtonType{
+    case Stick
+    case Gyro
+    case none
+}
+
+enum MonitorType{
+    case none
+    case WIFI
+    case WEB
+}
+
 // MARK: HOME PAGE
 struct HomeView: View{
     @Binding var page:Pagetype
     @Binding var home:Bool
     
-    @State var StickON: Bool = true
-    @State var monitorOn:Bool = true
-    @ObservedObject var Contoroller: sendMessage
+    @ObservedObject var SendInputValue: sendMessage
     
     @State var settingIP:String = ""
     @State var settingPort:String = ""
     
-    var myIP:String = "Check it from Settings → Wi-Fi → Details."
-    var myPORT:String = "8080"
+    let myIP:String = "Check it from Settings → Wi-Fi → Details."
+    let myPORT:String = "8080"
     
-    @State var selectedNS: String = "Special"
-    @State var selectedSG: String = "Stick"
+
+    
+    @State var monitor_t: MonitorType = .none
+    @State var button_t: ButtonType   = .Stick
+    
+    @State var monitor_name: String = "Basic"
+    @State var button_name: String = "Stick"
     
     @FocusState  var isInputActive:Bool
     var buttonHeight: CGFloat = 50
@@ -35,7 +50,7 @@ struct HomeView: View{
         
         ZStack{
             VStack{
-                // background
+//                 background
                 Image("home_back")
                     .resizable()
                     .frame(width: Swidth + Swidth / 30 ,height: Sheight + Sheight / 20)
@@ -46,13 +61,13 @@ struct HomeView: View{
                 // MARK: left
                 
                 VStack{
-                    TextField("   IP: \(Contoroller.hoststr)",text:$settingIP)
+                    TextField("   IP: \(SendInputValue.hoststr)",text:$settingIP)
                         .frame(width: 400)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
                         .padding(.all,5)
         
-                    TextField("Port: \(Contoroller.portstr)",text:$settingPort)
+                    TextField("Port: \(SendInputValue.portstr)",text:$settingPort)
                         .frame(width: 400)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
@@ -64,7 +79,7 @@ struct HomeView: View{
                         .background()
                         .cornerRadius(5)
                         .padding(.all,5)
-                    
+
                     Text("  Port: \(myPORT)")
                         .frame(width: 400,height: 35,alignment: .leading)
                         .background()
@@ -73,13 +88,13 @@ struct HomeView: View{
                     
                     Button {
                         if settingIP != ""{
-                            Contoroller.host = NWEndpoint.Host(settingIP)
-                            Contoroller.hoststr = settingIP
+                            SendInputValue.host = NWEndpoint.Host(settingIP)
+                            SendInputValue.hoststr = settingIP
                             settingIP = ""
                         }
                         if settingPort != ""{
-                            Contoroller.port = NWEndpoint.Port(settingPort) ?? 8080
-                            Contoroller.portstr = settingPort
+                            SendInputValue.port = NWEndpoint.Port(settingPort) ?? 8008
+                            SendInputValue.portstr = settingPort
                             settingPort = ""
                         }
                         
@@ -95,7 +110,7 @@ struct HomeView: View{
                     .shadow(radius: 5)
                     
                 }
-                .frame(height: Sheight * 7 / 10)
+                .frame(height: Sheight * 4 / 5)
                 .padding(15)
                 .background(Color(red: 0.8, green: 0.2, blue: 0.4, opacity: 0.2))
                 .cornerRadius(15)
@@ -104,44 +119,44 @@ struct HomeView: View{
                 
                 // MARK: right
                 VStack{
-                    
-                    Button {
-                        monitorOn = false
-                        selectedNS = "Normal"
-                    } label: {
-                        Text("Normal")
-                            .bold()
-                            .padding()
-                            .frame(width: 200, height: buttonHeight)
-                            .foregroundColor(Color.white)
-                            .background(Color.purple)
-                            .cornerRadius(10)
+                    HStack{
+                        Button {
+                            monitor_t = .none
+                            monitor_name = "basic"
+                        } label: {
+                            Text("basic")
+                                .bold()
+                                .padding()
+                                .frame(width: 95, height: buttonHeight)
+                                .foregroundColor(Color.white)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
+                        .shadow(radius:(monitor_t == .none) ? 10 : 0)
+                        .opacity((monitor_t == .none) ? 1 : 0.4)
+                        
+                        Button {
+                            button_t = .Stick
+                            button_name = "Stick"
+                        } label: {
+                            Text("Stick")
+                                .bold()
+                                .padding()
+                                .frame(width: 95, height: buttonHeight)
+                                .foregroundColor(Color.white)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
+                        .shadow(radius:(button_t == .Stick) ? 10 : 0)
+                        .opacity((button_t == .Stick) ? 1 : 0.4)
                     }
-                    .shadow(radius:(monitorOn == false) ? 10 : 0)
-                    .opacity((monitorOn == false) ? 1 : 0.4)
-                    
-                    Button {
-                        monitorOn = true
-                        selectedNS = "Special"
-                    } label: {
-                        Text("Special")
-                            .bold()
-                            .padding()
-                            .frame(width: 200, height: buttonHeight)
-                            .foregroundColor(Color.white)
-                            .background(Color.purple)
-                            .cornerRadius(10)
-                    }
-                    .shadow(radius:(monitorOn == true) ? 10 : 0)
-                    .opacity((monitorOn == true) ? 1 : 0.4)
                     
                     HStack{
                         Button {
-                            StickON = true
-                            selectedSG = "Stick"
+                            monitor_t = .WIFI
+                            monitor_name = "Wi-Fi"
                         } label: {
-//                            Text("Stick")
-                            Image(systemName: "gamecontroller.fill")
+                            Text("Socket")
                                 .bold()
                                 .padding()
                                 .frame(width: 95, height: buttonHeight)
@@ -149,14 +164,14 @@ struct HomeView: View{
                                 .background(Color.purple)
                                 .cornerRadius(10)
                         }
-                        .shadow(radius:(StickON == true) ? 10 : 0)
-                        .opacity((StickON == true) ? 1 : 0.4)
+                        .shadow(radius:(monitor_t == .WIFI) ? 10 : 0)
+                        .opacity((monitor_t == .WIFI) ? 1 : 0.4)
                         
                         Button {
-                            StickON = false
-                            selectedSG = "Gyro"
+                            button_t = .Gyro
+                            button_name = "Gyro"
                         } label: {
-                            Image(systemName:"steeringwheel")
+                            Text("Gyro")
                                 .bold()
                                 .padding()
                                 .frame(width: 95, height: buttonHeight)
@@ -164,34 +179,88 @@ struct HomeView: View{
                                 .background(Color.purple)
                                 .cornerRadius(10)
                         }
-                        .shadow(radius:(StickON == false) ? 10 : 0)
-                        .opacity((StickON == false) ? 1 : 0.4)
+                        .shadow(radius:(button_t == .Gyro) ? 10 : 0)
+                        .opacity((button_t == .Gyro) ? 1 : 0.4)
+                    }
+
+                    
+                    HStack{
+                        Button {
+                            monitor_t = .WEB
+                            monitor_name = "Web"
+                        } label: {
+                            Text("Web")
+                                .bold()
+                                .padding()
+                                .frame(width: 95, height: buttonHeight)
+                                .foregroundColor(Color.white)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
+                        .shadow(radius:(monitor_t == .WEB) ? 10 : 0)
+                        .opacity((monitor_t == .WEB) ? 1 : 0.4)
+                        
+                        Button {
+                            button_t = .none
+                            button_name = "VR"
+                        } label: {
+                            Text("VR")
+                                .bold()
+                                .padding()
+                                .frame(width: 95, height: buttonHeight)
+                                .foregroundColor(Color.white)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
+                        .shadow(radius:(button_t == .none) ? 10 : 0)
+                        .opacity((button_t == .none) ? 1 : 0.4)
                     }
                     
-                    Text("\(selectedNS) \(selectedSG) controller")
+                    Text("\(monitor_name) \(button_name) controller")
                         .bold()
-                        .foregroundColor(Color.white)
+                        .foregroundColor(((monitor_t == .none)&&(button_t == .none)) ? Color.red:Color.white)
                     
                     Button {
-                        if(monitorOn == true){
-                            if(StickON == true){
-                                page = .SpecialStick
-                                
-                            }
-                            else{
-                                page = .SpecialGyro
-                            }
-                        }
-                        else if(monitorOn == false){
-                            if(StickON == true){
+                        if(monitor_t == .none){
+                            if(button_t == .Stick){
                                 page = .NormalStick
                             }
-                            else{
+                            if(button_t == .Gyro){
                                 page = .NormalGyro
+
                             }
+                            home = false
+                            if(button_t == .none){
+                                page = .home
+                                home = true
+                            }
+
                         }
-                        home = false
-                    
+                        else if(monitor_t == .WEB){
+                            if(button_t == .Stick){
+                                page = .PremiumStick
+                            }
+                            if(button_t == .Gyro){
+                                page = .PremiumGyro
+                            }
+                            if(button_t == .none){
+                                page = .PremiumVR
+                            }
+                            home = false
+                        }
+                        else{
+                            if(button_t == .Stick){
+                                page = .SpecialStick
+                            }
+                            if(button_t == .Gyro){
+                                page = .SpecialGyro
+                            }
+                            if(button_t == .none){
+                                page = .SpecialVR
+                            }
+                            home = false
+                        }
+                        
                     } label: {
                         Text("Start")
                             .bold()
@@ -202,9 +271,8 @@ struct HomeView: View{
                             .cornerRadius(25)
                             .shadow(radius: 10)
                     }
-                    
                 }
-                .frame(height: Sheight * 7 / 10)
+                .frame(height: Sheight * 4 / 5)
                 .padding(15)
                 .background(Color(red: 0.8, green: 0.2, blue: 0.4, opacity: 0.2))
                 .cornerRadius(15)

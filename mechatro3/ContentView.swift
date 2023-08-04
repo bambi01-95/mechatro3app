@@ -13,43 +13,74 @@ enum Pagetype{
     case home
     case NormalStick
     case NormalGyro
+    
     case SpecialStick
     case SpecialGyro
+    case SpecialVR
+    
+    case PremiumStick
+    case PremiumGyro
+    case PremiumVR
 }
+
+
+
+import SwiftUI
+import WebKit
+
+struct WebView: UIViewRepresentable {
+    
+    let loardUrl: URL
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let request = URLRequest(url: loardUrl)
+        uiView.load(request)
+    }
+}
+
+
 
 struct ContentView: View {
     @State var page:Pagetype = .Launch
     @State var home: Bool = false
     @State var launch: Bool = true
-    @ObservedObject var Contoroller = sendMessage()
+    @ObservedObject var SendInputValue = sendMessage()
 
     
     var body: some View {
         ZStack{
-            if launch == false{
-                Image("home_back")
-                .resizable()
-                .frame(width:300,height: 100)
-                    .mask(
-                        Text("TATA")
-                            .font(.system(size: 100, weight: .black)))
-            }
             if (home == true){
                 if(page == .home){
-                    HomeView(page:$page,home:$home, Contoroller: Contoroller)
+                    HomeView(page:$page,home:$home, SendInputValue: SendInputValue)
                 }
             }
             else{
                 if(page == .NormalStick){
-                    NormalStickView(page: $page, home: $home,Contoroller: Contoroller)
+                    NormalStickView(page: $page, home: $home,SendInputValue: SendInputValue)
                 }
-                if(page == .NormalGyro){                    NormalGyroView(page: $page, home: $home,Contoroller: Contoroller)
+                if(page == .NormalGyro){                    NormalGyroView(page: $page, home: $home,SendInputValue: SendInputValue)
                 }
                 if(page == .SpecialStick){
-                    SpecialStickView(page: $page, home: $home,Contoroller: Contoroller)
+                    SpecialStickView(page: $page, home: $home,SendInputValue: SendInputValue)
                 }
                 if(page == .SpecialGyro){
-                    SpecialGyroView(page: $page, home: $home, Contoroller: Contoroller)
+                    SpecialGyroView(page: $page, home: $home, SendInputValue: SendInputValue)
+                }
+                if(page == .SpecialVR){
+                    SpecialVR(page: $page, home: $home)
+                }
+                if(page == .PremiumStick){
+                    PremiumStick(page: $page, home:$home, SendInputValue: SendInputValue)
+                }
+                if(page == .PremiumGyro){
+                    PremiumGyro(page: $page, home:$home, SendInputValue: SendInputValue)
+                }
+                if(page == .PremiumVR){
+                    PremiumVR(page: $page, home:$home,SendInputValue: SendInputValue)
                 }
             }
             if launch == true {
@@ -60,8 +91,6 @@ struct ContentView: View {
         }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

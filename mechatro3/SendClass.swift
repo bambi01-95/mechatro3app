@@ -17,14 +17,14 @@ class sendMessage: ObservableObject{
     @Published var message = "0,0,0,0"
     @Published var hoststr: String
     @Published var portstr: String
+    
     var connection: NWConnection? = nil
-// MARK: ポート番号　ここに書く
     @Published var host: NWEndpoint.Host
     @Published var port: NWEndpoint.Port
     
     var timer :Timer?
     var count: Int64 = 0
-    
+    // MARK: ポート番号　ここに書く
     init() {
         self.hoststr = "192.168.0.31"
         self.portstr = "8008"
@@ -32,13 +32,14 @@ class sendMessage: ObservableObject{
         self.port = 8008
     }
 
-    
+    // タイマーで自動的に１秒ごとに送信されるようになっている
     func startSend(){
         self.connect()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.send(self.message.data(using: .utf8)!)
         }
     }
+    
     func println(){
         count += 1
         print(count)
@@ -49,6 +50,7 @@ class sendMessage: ObservableObject{
     }
     
     // 参考URLと変更あり　connection！.send→　if conncition != nil && connection?.send(...
+    // 一回の送信
     func send(_ payload: Data) {
         if connection != nil {
             connection?.send(content: payload, completion: .contentProcessed({ sendError in

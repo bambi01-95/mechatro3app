@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B011C522A581ABB0009DAC8 /* SpecialVR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B011C512A581ABB0009DAC8 /* SpecialVR.swift */; };
+		1B011C542A581AF00009DAC8 /* PremiumStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B011C532A581AF00009DAC8 /* PremiumStick.swift */; };
+		1B011C562A581B0F0009DAC8 /* PremiumGyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B011C552A581B0F0009DAC8 /* PremiumGyro.swift */; };
+		1B011C582A581B2E0009DAC8 /* PremiumVR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B011C572A581B2E0009DAC8 /* PremiumVR.swift */; };
 		1B45022E2A3FDE580002F5D9 /* mechatro3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45022D2A3FDE580002F5D9 /* mechatro3App.swift */; };
 		1B4502302A3FDE580002F5D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45022F2A3FDE580002F5D9 /* ContentView.swift */; };
 		1B4502322A3FDE590002F5D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4502312A3FDE590002F5D9 /* Assets.xcassets */; };
@@ -19,9 +23,18 @@
 		1B4502472A3FE30B0002F5D9 /* SpecialGyroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */; };
 		1B4502492A3FEAA00002F5D9 /* SendClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4502482A3FEAA00002F5D9 /* SendClass.swift */; };
 		1B45024B2A3FEAC60002F5D9 /* ReceiveClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */; };
+		1B6891A52A625E540078BAB3 /* stickcont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6891A42A625E540078BAB3 /* stickcont.swift */; };
+		1B90C9522A63B60400AE2425 /* gyrocont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B90C9512A63B60400AE2425 /* gyrocont.swift */; };
+		1B90C9542A63CB9E00AE2425 /* stickcont_f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B90C9532A63CB9E00AE2425 /* stickcont_f.swift */; };
+		1B90C9562A63CBB100AE2425 /* gyrocont_f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B90C9552A63CBB100AE2425 /* gyrocont_f.swift */; };
+		1BE4981C2A6E159900E402BF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE4981B2A6E159900E402BF /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B011C512A581ABB0009DAC8 /* SpecialVR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialVR.swift; sourceTree = "<group>"; };
+		1B011C532A581AF00009DAC8 /* PremiumStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumStick.swift; sourceTree = "<group>"; };
+		1B011C552A581B0F0009DAC8 /* PremiumGyro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumGyro.swift; sourceTree = "<group>"; };
+		1B011C572A581B2E0009DAC8 /* PremiumVR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumVR.swift; sourceTree = "<group>"; };
 		1B45022A2A3FDE580002F5D9 /* mechatro3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mechatro3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B45022D2A3FDE580002F5D9 /* mechatro3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mechatro3App.swift; sourceTree = "<group>"; };
 		1B45022F2A3FDE580002F5D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +49,11 @@
 		1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialGyroView.swift; sourceTree = "<group>"; };
 		1B4502482A3FEAA00002F5D9 /* SendClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendClass.swift; sourceTree = "<group>"; };
 		1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveClass.swift; sourceTree = "<group>"; };
+		1B6891A42A625E540078BAB3 /* stickcont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickcont.swift; sourceTree = "<group>"; };
+		1B90C9512A63B60400AE2425 /* gyrocont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrocont.swift; sourceTree = "<group>"; };
+		1B90C9532A63CB9E00AE2425 /* stickcont_f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickcont_f.swift; sourceTree = "<group>"; };
+		1B90C9552A63CBB100AE2425 /* gyrocont_f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrocont_f.swift; sourceTree = "<group>"; };
+		1BE4981B2A6E159900E402BF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +97,17 @@
 				1B4502422A3FE2760002F5D9 /* NormalGyroView.swift */,
 				1B4502442A3FE2C00002F5D9 /* SpecialStickView.swift */,
 				1B4502462A3FE30B0002F5D9 /* SpecialGyroView.swift */,
+				1B011C512A581ABB0009DAC8 /* SpecialVR.swift */,
+				1B011C532A581AF00009DAC8 /* PremiumStick.swift */,
+				1B011C552A581B0F0009DAC8 /* PremiumGyro.swift */,
+				1B011C572A581B2E0009DAC8 /* PremiumVR.swift */,
 				1B4502482A3FEAA00002F5D9 /* SendClass.swift */,
 				1B45024A2A3FEAC60002F5D9 /* ReceiveClass.swift */,
+				1B6891A42A625E540078BAB3 /* stickcont.swift */,
+				1B90C9512A63B60400AE2425 /* gyrocont.swift */,
+				1B90C9532A63CB9E00AE2425 /* stickcont_f.swift */,
+				1B90C9552A63CBB100AE2425 /* gyrocont_f.swift */,
+				1BE4981B2A6E159900E402BF /* SwiftUIView.swift */,
 			);
 			path = mechatro3;
 			sourceTree = "<group>";
@@ -164,14 +191,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4502302A3FDE580002F5D9 /* ContentView.swift in Sources */,
+				1B90C9542A63CB9E00AE2425 /* stickcont_f.swift in Sources */,
+				1B011C562A581B0F0009DAC8 /* PremiumGyro.swift in Sources */,
+				1B90C9562A63CBB100AE2425 /* gyrocont_f.swift in Sources */,
 				1B45023F2A3FE09A0002F5D9 /* HomeView.swift in Sources */,
 				1B4502432A3FE2760002F5D9 /* NormalGyroView.swift in Sources */,
 				1B4502412A3FE1750002F5D9 /* NormalStickView.swift in Sources */,
 				1B4502452A3FE2C00002F5D9 /* SpecialStickView.swift in Sources */,
 				1B4502472A3FE30B0002F5D9 /* SpecialGyroView.swift in Sources */,
+				1BE4981C2A6E159900E402BF /* SwiftUIView.swift in Sources */,
+				1B011C582A581B2E0009DAC8 /* PremiumVR.swift in Sources */,
+				1B6891A52A625E540078BAB3 /* stickcont.swift in Sources */,
 				1B45024B2A3FEAC60002F5D9 /* ReceiveClass.swift in Sources */,
 				1B45022E2A3FDE580002F5D9 /* mechatro3App.swift in Sources */,
+				1B011C522A581ABB0009DAC8 /* SpecialVR.swift in Sources */,
 				1B45023D2A3FDED70002F5D9 /* LaunchScreen.swift in Sources */,
+				1B011C542A581AF00009DAC8 /* PremiumStick.swift in Sources */,
+				1B90C9522A63B60400AE2425 /* gyrocont.swift in Sources */,
 				1B4502492A3FEAA00002F5D9 /* SendClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,10 +344,11 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -320,7 +357,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SHIKA.mechatro3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -347,10 +386,11 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -359,7 +399,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SHIKA.mechatro3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
